@@ -1,14 +1,19 @@
-function alphabetPosition(text) {
-    let list = []
-    for (let x of text) {
-        if (64 < x.charCodeAt(0) && x.charCodeAt(0) < 123) {
-            if (!(90 < x.charCodeAt(0) && x.charCodeAt(0) < 97)) {
-                // list.push((x.charCodeAt(0) < 91) ? x.charCodeAt(0) - 64 : x.charCodeAt(0) - 96)
-                list.push(x.charCodeAt(0))
-            }
+function high(text) {
+    let bestCode = 0
+    let bestWord = ""
+    let currentWord = 0
+    for (let word of text.split(' ')) {
+        currentWord = 0
+        for (let x of word) {
+            currentWord += x.charCodeAt(0) - 99
+        }
+        if (currentWord > bestCode) {
+            bestCode = currentWord
+            bestWord = word
         }
     }
-    return list.join(' ');
+    console.log(bestCode)
+    return bestWord
 }
 
-console.log(alphabetPosition("A"))
+console.log(high("i ahve two bintangs"))
